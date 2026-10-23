@@ -4,20 +4,18 @@ compatibility_date = "2026-10-23"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "rukmani-clinic-bookings"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_name = "rc-clinic-bookings"
+database_id = "b2c4e20c-1356-4753-a04c-5d8bf59e6536"
 
 [[kv_namespaces]]
 binding = "SESSIONS"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "f2cedd7a16e54b8a843b33e2304af289"
 
 [vars]
-APP_ORIGIN = "https://REPLACE-WITH-YOUR-CLINIC-PAGES-DOMAIN"
+APP_ORIGIN = "https://rukmani-clinic-2.dhavaneshdell1.workers.dev"
 
 # Create an R2 bucket named rukmani-clinic-public-assets and bind it here.
-[[r2_buckets]]
-binding = "ASSETS"
-bucket_name = "rukmani-clinic-public-assets"
+
 
 # Configure these as Worker secrets/vars after deploying Google Apps Script.
 # GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec"
