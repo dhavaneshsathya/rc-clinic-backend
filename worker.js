@@ -78,7 +78,17 @@ export default {
   const respond = (data,status=200) => new Response(JSON.stringify(data),{status,headers});
   const url = new URL(request.url);
   try {
-   if (!env.DB || !env.SESSIONS || !env.APP_ORIGIN) return respond({ok:false,error:'Backend is not fully configured.'},503);
+   if (!env.DB || !env.SESSIONS || !env.APP_ORIGIN) {
+  return respond({
+    ok: false,
+    error: 'Backend is not fully configured.',
+    diagnostics: {
+      DB: !!env.DB,
+      SESSIONS: !!env.SESSIONS,
+      APP_ORIGIN: !!env.APP_ORIGIN
+    }
+  }, 503);
+}
    if (request.method === 'POST' && url.pathname === '/api/create-order') {
     const input = validateBooking(await request.json());
     // Server-side slot collision check; D1 remains the source of truth for confirmed bookings.
