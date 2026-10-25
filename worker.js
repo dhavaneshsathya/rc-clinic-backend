@@ -77,6 +77,16 @@ export default {
   const headers = { ...JSON_HEADERS, 'access-control-allow-origin':env.APP_ORIGIN, 'vary':'Origin' };
   const respond = (data,status=200) => new Response(JSON.stringify(data),{status,headers});
   const url = new URL(request.url);
+   if (url.pathname === "/api/health") {
+  return respond({
+    ok: true,
+    diagnostics: {
+      DB: !!env.DB,
+      SESSIONS: !!env.SESSIONS,
+      APP_ORIGIN: !!env.APP_ORIGIN
+    }
+  });
+}
   try {
    if (!env.DB || !env.SESSIONS || !env.APP_ORIGIN) {
   return respond({
